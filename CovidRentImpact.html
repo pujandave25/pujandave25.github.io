@@ -75,6 +75,7 @@
     <div id="tooltip"></div>
     <script type="text/javascript">
         
+        const dataFile = "cleaned_zillow_avg_rent.csv"
         const canvasWidth = 600;
         const canvasHeight = 600;
         
@@ -85,6 +86,21 @@
 
         var selectedOpacity = 1;
         var unselectedOpacity = 0.1;
+
+        const xScale = d3.scaleLinear()
+                       .domain([600, 3200])
+                       .range([0, width]);
+        const yScale = d3.scaleLinear()
+                   .domain([600, 3200])
+                   .range([height, 0]);
+
+        const negColScale = d3.scaleLinear()
+                    .domain([-7, 0])
+                    .range(["red", "orange"]);
+
+        const posColScale = d3.scaleLinear()
+                    .domain([0, 20])
+                    .range(["lightgreen", "green"]);
 
         const vizs = {
             TREND1: "trend1",
@@ -110,22 +126,7 @@
             selectedOpacity = 1;
             unselectedOpacity = 0.1;
             
-            const data = await d3.csv("https://raw.githubusercontent.com/pujandave25/pujandave25.github.io/main/cleaned_zillow_avg_rent.csv");
-
-            xScale = d3.scaleLinear()
-                       .domain([600, 3200])
-                       .range([0, width]);
-            yScale = d3.scaleLinear()
-                       .domain([600, 3200])
-                       .range([height, 0]);
-
-            negColScale = d3.scaleLinear()
-                        .domain([-7, 0])
-                        .range(["red", "orange"]);
-
-            posColScale = d3.scaleLinear()
-                        .domain([0, 20])
-                        .range(["lightgreen", "green"]);
+            const data = await d3.csv(dataFile);
 
             svg.append("text")
                .attr("x", margin)
@@ -283,22 +284,7 @@
             selectedOpacity = 1;
             unselectedOpacity = 0.1;
 
-            const data = await d3.csv("https://raw.githubusercontent.com/pujandave25/pujandave25.github.io/main/cleaned_zillow_avg_rent.csv");
-            
-            xScale = d3.scaleLinear()
-                       .domain([600, 3200])
-                       .range([0, width]);
-            yScale = d3.scaleLinear()
-                       .domain([600, 3200])
-                       .range([height, 0]);
-
-            negColScale = d3.scaleLinear()
-                        .domain([-7, 0])
-                        .range(["red", "orange"]);
-
-            posColScale = d3.scaleLinear()
-                        .domain([0, 20])
-                        .range(["lightgreen", "green"]);
+            const data = await d3.csv(dataFile);
 
             svg.append("text")
                .attr("x", margin)
@@ -460,22 +446,7 @@
             .attr("y", 16 + 20 + margin + "px").attr("font-size", "12px").text("Hover on the circles for more information.");
 
             
-            const data = await d3.csv("https://raw.githubusercontent.com/pujandave25/pujandave25.github.io/main/cleaned_zillow_avg_rent.csv");
-
-            xScale = d3.scaleLinear()
-                       .domain([600, 3200])
-                       .range([0, width]);
-            yScale = d3.scaleLinear()
-                       .domain([600, 3200])
-                       .range([height, 0]);
-
-            negColScale = d3.scaleLinear()
-                        .domain([-7, 0])
-                        .range(["red", "orange"]);
-
-            posColScale = d3.scaleLinear()
-                        .domain([0, 20])
-                        .range(["lightgreen", "green"]);
+            const data = await d3.csv(dataFile);
 
             svg.append("text")
                .attr("x", margin)
